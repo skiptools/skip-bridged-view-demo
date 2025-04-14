@@ -16,19 +16,23 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.2.1"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0")
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0"),
+        .package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")
     ],
     targets: [
-        .target(name: "SkipBridgedViewDemo", dependencies: [.product(name: "SkipUI", package: "skip-ui")], plugins: [.plugin(name: "skipstone", package: "skip")]),
+        .target(name: "SkipBridgedViewDemo", dependencies: [
+            .product(name: "SkipUI", package: "skip-ui"),
+            .product(name: "SkipFuseUI", package: "skip-fuse-ui")
+        ], plugins: [.plugin(name: "skipstone", package: "skip")]),
         .testTarget(name: "SkipBridgedViewDemoTests", dependencies: ["SkipBridgedViewDemo", .product(name: "SkipTest", package: "skip")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )
 
 if ProcessInfo.processInfo.environment["SKIP_BRIDGE"] ?? "0" != "0" {
-    package.dependencies += [.package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")]
-    package.targets.forEach({ target in
-        target.dependencies += [.product(name: "SkipFuseUI", package: "skip-fuse-ui")]
-    })
+//    package.dependencies += [.package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")]
+//    package.targets.forEach({ target in
+//        target.dependencies += [.product(name: "SkipFuseUI", package: "skip-fuse-ui")]
+//    })
     // all library types must be dynamic to support bridging
     package.products = package.products.map({ product in
         guard let libraryProduct = product as? Product.Library else { return product }

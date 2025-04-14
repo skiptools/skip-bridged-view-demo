@@ -1,36 +1,27 @@
 // Copyright 2024–2025 Skip
 // SPDX-License-Identifier: LGPL-3.0-only WITH LGPL-3.0-linking-exception
 import Foundation
-#if !SKIP_BRIDGE
-#if !SKIP
-import SwiftUI
-
-/// Example of a view that can be used in a native `SkipFuseUI` app.
-public struct SkipBridgedDemoView : View {
-    public init() {
-    }
-
-    public var body: some View {
-        Text(verbatim: "💙 Hello Darwin!")
-    }
-}
-#endif
-#endif
-
-#if SKIP_BRIDGE
+#if canImport(SkipFuseUI)
 import SkipFuseUI
+#else
+import SwiftUI
+#endif
 
+/// A view that shows a blue heart on iOS and a green heart on Android.
 public struct SkipBridgedDemoView : View {
     public init() {
     }
 
     public var body: some View {
+        #if os(Android)
         ComposeView {
             DemoComposer()
         }
+        #else
+        Text(verbatim: "💙 Hello Darwin!")
+        #endif
     }
 }
-#endif
 
 #if SKIP
 import SkipUI

@@ -4,9 +4,3 @@
 skip:
   mode: 'native'
   bridging: true
-
-build:
-  contents:
-    - block: 'dependencies'
-      contents:
-        - 'implementation("androidx.security:security-crypto:1.0.0")'
