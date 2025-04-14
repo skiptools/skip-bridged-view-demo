@@ -2,6 +2,7 @@
 #
 # Kotlin dependencies and Gradle build options for this module can be configured here
 skip:
+  mode: 'native'
   bridging: true
 
 build:
