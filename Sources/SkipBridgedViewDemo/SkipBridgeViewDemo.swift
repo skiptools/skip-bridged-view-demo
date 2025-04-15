@@ -1,11 +1,6 @@
 // Copyright 2024–2025 Skip
 // SPDX-License-Identifier: LGPL-3.0-only WITH LGPL-3.0-linking-exception
-import Foundation
-#if canImport(SkipFuseUI)
 import SkipFuseUI
-#else
-import SwiftUI
-#endif
 
 /// A view that shows a blue heart on iOS and a green heart on Android.
 public struct SkipBridgedDemoView : View {

@@ -8,7 +8,7 @@ import PackageDescription
 import Foundation
 
 let package = Package(
-    name: "skip-bridged-view-demo",
+    name: "skip-bridge-view-demo",
     defaultLocalization: "en",
     platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
