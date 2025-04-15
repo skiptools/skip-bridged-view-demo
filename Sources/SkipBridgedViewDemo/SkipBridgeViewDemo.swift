@@ -19,8 +19,6 @@ public struct SkipBridgedDemoView : View {
 }
 
 #if SKIP
-import SkipUI
-
 /// Use a ContentComposer to integrate Compose content. This code will be transpiled to Kotlin.
 struct DemoComposer : ContentComposer {
     @Composable func Compose(context: ComposeContext) {
