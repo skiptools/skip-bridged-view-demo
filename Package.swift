@@ -8,7 +8,7 @@ import PackageDescription
 import Foundation
 
 let package = Package(
-    name: "skip-bridge-view-demo",
+    name: "skip-bridged-view-demo",
     defaultLocalization: "en",
     platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
@@ -16,12 +16,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.2.1"),
-        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")
     ],
     targets: [
         .target(name: "SkipBridgedViewDemo", dependencies: [
-            .product(name: "SkipUI", package: "skip-ui"),
             .product(name: "SkipFuseUI", package: "skip-fuse-ui")
         ], plugins: [.plugin(name: "skipstone", package: "skip")]),
         .testTarget(name: "SkipBridgedViewDemoTests", dependencies: ["SkipBridgedViewDemo", .product(name: "SkipTest", package: "skip")], plugins: [.plugin(name: "skipstone", package: "skip")]),
