@@ -16,8 +16,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.2.1"),
-        //.package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")
-        .package(url: "https://source.skip.tools/skip-fuse-ui.git", branch: "main")
+        .package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")
+        //.package(url: "https://source.skip.tools/skip-fuse-ui.git", branch: "main")
     ],
     targets: [
         .target(name: "SkipBridgedViewDemo", dependencies: [
