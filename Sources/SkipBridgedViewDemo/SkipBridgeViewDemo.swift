@@ -1,5 +1,19 @@
 // Copyright 2024–2025 Skip
+import Foundation
+#if SKIP_BRIDGE
 import SkipFuseUI
+#else
+#if canImport(OSLog)
+import OSLog
+#endif
+#if canImport(SkipFuseUI) || SKIP
+import SkipFuseUI
+#else
+import SwiftUI
+#endif
+#endif // SKIP_BRIDGE
+
+//let logger: Logger = Logger(subsystem: "skip.bridge.view.demo", category: "SkipBridgedDemoView")
 
 /// A view that shows a blue heart on iOS and a green heart on Android.
 public struct SkipBridgedDemoView : View {
@@ -7,7 +21,7 @@ public struct SkipBridgedDemoView : View {
     }
 
     public var body: some View {
-        #if os(Android)
+        #if SKIP_BRIDGE && os(Android)
         ComposeView {
             DemoComposer()
         }
