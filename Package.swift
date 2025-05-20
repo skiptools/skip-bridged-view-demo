@@ -5,7 +5,6 @@
 // Swift Package, Sources, and Tests into an
 // Android Gradle Project with Kotlin sources and JUnit tests.
 import PackageDescription
-import Foundation
 
 let package = Package(
     name: "skip-bridged-view-demo",
@@ -31,7 +30,7 @@ let package = Package(
     ]
 )
 
-if ProcessInfo.processInfo.environment["SKIP_BRIDGE"] ?? "0" != "0" {
+if Context.environment["SKIP_BRIDGE"] ?? "0" != "0" {
     package.dependencies += [.package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.0.0"..<"2.0.0")]
     package.targets.forEach({ target in
         target.dependencies += [.product(name: "SkipFuseUI", package: "skip-fuse-ui")]
